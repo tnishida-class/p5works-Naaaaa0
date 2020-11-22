@@ -25,6 +25,7 @@ function isLeapYear(y){
 }
 
 function daysInYear(y){
+   return ((y % 4 == 0) && (y % 100 !=0 ) || (y % 400 == 0 ))?366:365;
   // BLANK[1]
 }
 
@@ -49,10 +50,41 @@ function dayOfYear(y, m, d){
 }
 
 function dayOfWeek(y, m, d){
+  for(let i = 1970; i < y; i++){
+    count += daysInYear(i)+ dayOfYear(y,m,d);
+    if (count%7==3){
+      return 0;
+    }
+    else if (count%7==4){
+      return 1;
+    }
+    else if (count%7==5){
+      return 2;
+    }
+    else if (count%7==6){
+      return 3;
+    }
+    else if (count%7==0){
+      return 4;
+    }
+    else if (count%7==1){
+      return 5;
+    }
+    else (count%7==2){
+      return 6;
+    }
+  }
   // BLANK[2]
 }
 
 function dayOfWeekAsString(dow){
   const a = ["日", "月", "火", "水", "木", "金", "土", "日"];
+  0="日"
+  1="月"
+  2="火"
+  3="水"
+  4="木"
+  5="金"
+  6="土"
   return a[dow];
 }

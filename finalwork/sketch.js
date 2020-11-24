@@ -9,10 +9,10 @@ function setup(){
   y = height / 2;
   a = width/10;
   b = width/10
-  vx = 3;
-  vy = 3;
-  wa = 10;
-  wb = 10;
+  vx = 5;
+  vy = 5;
+  wa = 12;
+  wb = 12;
   count=0;
 }
 
@@ -51,16 +51,18 @@ function draw(){
   }
 }
 
-function star(cx, cy, r){
- noStroke();
- fill(255, 204, 0);
- beginShape();
- for(let i = 0; i < 5; i++){
-  const theta = TWO_PI * i * 2 / 5 - HALF_PI;
-  const x = cx + cos(theta) * r;
-  const y = cy + sin(theta) * r;
-  vertex(x, y);
- }
+function star(x, y, r, angle){
+  noStroke();
+  fill(255, 204, 0);
+  beginShape();
+  count=count+1
+  for(var i = 0; i < 20; i++){
+    var theta = TWO_PI * i * 2 / 5 - HALF_PI + count*angle;
+    // BLANK[1] (hint: angle 分だけ星を回転させるには？)
+    var x = x + cos(theta) * r;
+    var y = y + sin(theta) * r;
+    vertex(x,y);
+  }
   endShape(CLOSE);
 }
 
